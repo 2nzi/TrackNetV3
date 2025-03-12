@@ -1,0 +1,93 @@
+*.mp4
+test/
+figure/
+__pycache__/
+utils/__pycache__/
+prediction/
+test_prediction/
+dataset_test.py
+fps_exp.py
+fps_exp_1.py
+worker.py
+temp.py
+model_compare.py
+predict_old.py
+*.sh
+*.mp4
+
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+
+*/corrected_test_label 
+
+# PyTorch
+# *.pth
+# *.pt
+# *.ckpt
+*.pkl
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Project specific
+data/
+prediction/
+output/
+exp/
+ckpts/
+*.mp4
+*.avi
+*.csv
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.zip
+*.tar.gz
+
+# Logs
+*.log
+logs/
+tensorboard/
+runs/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Local development settings
+local_settings.py
+db.sqlite3
+
+*.venv/
