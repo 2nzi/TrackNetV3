@@ -48,8 +48,8 @@ ENV/
 */corrected_test_label 
 
 # PyTorch
-# *.pth
-# *.pt
+*.pth
+*.pt
 # *.ckpt
 *.pkl
 
@@ -65,7 +65,7 @@ data/
 prediction/
 output/
 exp/
-ckpts/
+# ckpts/
 *.mp4
 *.avi
 *.csv

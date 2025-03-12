@@ -21,7 +21,7 @@ OpenCV
 
 2. **Cloner le repository**
 ```bash
-git clone [votre-repo]
+git clone [vot]
 cd [votre-repo]
 ```
 
