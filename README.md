@@ -1,7 +1,72 @@
-# TrackNetV3
-We present TrackNetV3, a model composed of two core modules: trajectory prediction and rectification. The trajectory prediction module leverages an estimated background as auxiliary data to locate the shuttlecock in spite of the fluctuating visual interferences. This module also incorporates mixup data augmentation to formulate complex
-scenarios to strengthen the network’s robustness. Given that a shuttlecock can occasionally be obstructed, we create repair masks by analyzing the predicted trajectory, subsequently rectifying the path via inpainting.
-[[paper](https://dl.acm.org/doi/10.1145/3595916.3626370)]
+# TrackNetV3 Football Adaptation
+
+Ce projet est une adaptation de [TrackNetV3](https://github.com/qaz812345/TrackNetV3) pour le suivi de ballon de football. Il s'agit d'une modification du projet original qui était conçu pour le suivi de volants de badminton.
+
+## Crédit et Référence
+
+**Ce projet n'est PAS le mien**. Il s'agit d'une adaptation du travail original :
+
+- **Projet Original** : [TrackNetV3](https://github.com/qaz812345/TrackNetV3)
+- **Paper** : [TrackNetV3: A End-to-End Framework for Online Badminton Trajectory Prediction](https://dl.acm.org/doi/10.1145/3595916.3626370)
+- **Auteurs Originaux** : Yi-Che Chen, Wei-Yih Chen, Wen-Chih Peng, et al.
+
+## Installation
+
+1. **Environnement requis**
+```bash
+Python 3.10.11
+PyTorch (avec CUDA recommandé)
+OpenCV
+```
+
+2. **Cloner le repository**
+```bash
+git clone [votre-repo]
+cd [votre-repo]
+```
+
+3. **Installer les dépendances**
+```bash
+pip install -r requirements.txt
+```
+
+## Utilisation
+
+1. **Télécharger les checkpoints**
+```bash
+# Télécharger et décompresser les checkpoints dans le dossier ckpts/
+unzip TrackNetV3_ckpts.zip
+```
+
+2. **Prédiction sur une vidéo**
+```bash
+# Prédiction simple
+python predict.py --video_file test.mp4 --tracknet_file ckpts/TrackNet_best.pt --inpaintnet_file ckpts/InpaintNet_best.pt --save_dir prediction
+
+# Avec visualisation vidéo
+python predict.py --video_file test.mp4 --tracknet_file ckpts/TrackNet_best.pt --inpaintnet_file ckpts/InpaintNet_best.pt --save_dir prediction --output_video
+
+# Pour les vidéos volumineuses
+python predict.py --video_file test.mp4 --tracknet_file ckpts/TrackNet_best.pt --inpaintnet_file ckpts/InpaintNet_best.pt --save_dir prediction --large_video --max_sample_num 20
+```
+
+## Modifications Apportées
+
+Les principales modifications par rapport au projet original incluent :
+- Adaptation pour le suivi de ballon de football
+- Ajout d'affichage des coordonnées et de la confiance sur la vidéo
+- Visualisation améliorée de la trajectoire
+- Support pour les vidéos volumineuses
+- Compatibilité avec Python 3.10.11
+
+## Licence
+
+Ce projet suit la même licence que le projet original TrackNetV3.
+
+## Contact
+
+Pour toute question concernant cette adaptation, veuillez ouvrir une issue dans ce repository.
+Pour les questions concernant TrackNetV3, veuillez vous référer au [repository original](https://github.com/qaz812345/TrackNetV3).
 
 <div align="center">
     <a href="./">
@@ -37,45 +102,6 @@ scenarios to strengthen the network’s robustness. Given that a shuttlecock can
         <img src="./figure/Comparison.png" width="80%"/>
     </a>
 </div>
-
-## Installation
-* Develop Environment
-    ```
-    Ubuntu 16.04.7 LTS
-    Python 3.8.7
-    torch 1.10.0
-    ```
-* Clone this reposity.
-    ```
-    git clone https://github.com/qaz812345/TrackNetV3.git
-    ```
-
-* Install the requirements.
-    ```
-    pip install -r requirements.txt
-    ```
-
-## Inference
-* Download the [checkpoints](https://drive.google.com/file/d/1CfzE87a0f6LhBp0kniSl1-89zaLCZ8cA/view?usp=sharing)
-* Unzip the file and place the parameter files to ```ckpts```
-    ```
-    unzip TrackNetV3_ckpts.zip
-    ```
-* Predict the label csv from the video
-    ```
-    python predict.py --video_file test.mp4 --tracknet_file ckpts/TrackNet_best.pt --inpaintnet_file ckpts/InpaintNet_best.pt --save_dir prediction
-    ```
-* Predict the label csv from the video, and output a video with predicted trajectory
-    ```
-    python predict.py --video_file test.mp4 --tracknet_file ckpts/TrackNet_best.pt --inpaintnet_file ckpts/InpaintNet_best.pt --save_dir prediction --output_video
-    ```
-* For large video
-    * Enable the ```--large_video``` flag to use an IterableDataset instead of the normal Dataset, which prevents memory errors. Note that this will decrease the inference speed.
-    * Use ```--max_sample_num``` to set the number of samples for background estimation.
-    * Use ```--video_range``` to specify the start and end seconds of the video for background estimation.
-    ```
-    python predict.py --video_file test.mp4 --tracknet_file ckpts/TrackNet_best.pt --inpaintnet_file ckpts/InpaintNet_best.pt --save_dir prediction --large_video --video_range 324,330
-    ```
 
 ## Training
 ### 1. Prepare Dataset
